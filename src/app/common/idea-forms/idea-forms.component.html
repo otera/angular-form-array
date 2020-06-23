@@ -1,0 +1,14 @@
+<form
+  [formGroup]="ideaForm"
+  (submit)="onSubmit()"
+  style="background-color: aquamarine;"
+>
+  <div formArrayName="ideas" *ngFor="let idea of ideas.controls; let i = index">
+    <!-- [value]無いと画面内画面で反映できないのではと思われる -->
+    <input type="text" [formControlName]="i" size="20" />
+    <!-- <button type="button" (click)="deleteItem(i, i)">削除</button> -->
+  </div>
+  <button type="button" (click)="addItem()">追加</button>
+  <hr />
+  <button type="submit">子Submit</button>
+</form>

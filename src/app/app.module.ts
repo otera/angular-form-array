@@ -6,9 +6,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CheckInputFormComponent } from "./check-input-form/check-input-form.component";
+import { IdeaFormsComponent } from './common/idea-forms/idea-forms.component';
 
 @NgModule({
-  declarations: [AppComponent, CheckInputFormComponent],
+  declarations: [AppComponent, CheckInputFormComponent, IdeaFormsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

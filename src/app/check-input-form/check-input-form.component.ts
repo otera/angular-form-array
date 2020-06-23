@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, FormControl, FormArray } from "@angular/forms";
 export class CheckInputFormComponent implements OnInit {
   public ideaForm: FormGroup;
   question: string[];
+  forms: FormGroup[];
 
   constructor(private fb: FormBuilder) {}
 
@@ -21,10 +22,11 @@ export class CheckInputFormComponent implements OnInit {
     this.question = ["○×ですか？", "◆♪ですか？", "■■ですか？"];
 
     // Formの設定
-    const items: string[] = new Array(this.question.length).fill("");
-    this.ideaForm = this.fb.group({
-      ideas: this.fb.array(items),
-    });
+    // const items: string[] = new Array(this.question.length).fill("");
+    // this.ideaForm = this.fb.group({
+    //   ideas: this.fb.array(items),
+    // });
+    this.forms = new Array(this.question.length);
   }
 
   // 疑似Submit

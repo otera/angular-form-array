@@ -1,16 +1,7 @@
-<form [formGroup]="ideaForm" (ngSubmit)="onSubmit()">
+<form>
   <div *ngFor="let q of question; let i = index">
     Q. {{ q }}
-    <div formArrayName="ideas">
-      <input
-        type="text"
-        [formControlName]="i"
-        [value]="ideas.controls[i].value"
-        size="20"
-      />
-      <button type="button" (click)="deleteItem(i, i)">削除</button>
-    </div>
-    <button type="button" (click)="addItem(i)">追加</button>
+    <app-idea-forms></app-idea-forms>
     <hr />
   </div>
   <button type="submit">お試し送信</button>
