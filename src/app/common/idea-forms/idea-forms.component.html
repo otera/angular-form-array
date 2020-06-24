@@ -12,7 +12,9 @@
       [placeholder]="ideaForm.placeholder"
       size="20"
     />
-    <button type="button" (click)="removeItem(i)">Delete</button>
+    <button type="button" (click)="removeItem(i)" [disabled]="isDisabled">
+      Delete
+    </button>
   </div>
   <button type="button" (click)="addItem()">Add</button>
   <hr />

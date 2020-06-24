@@ -18,6 +18,9 @@ export class IdeaFormsComponent implements OnInit {
   @ViewChildren("ideaInput") ideaInputElement: QueryList<ElementRef>;
   @Input() ideaForm: ciFormSetting;
 
+  // 削除ボタンを非活性にするかどうか
+  isDisabled = true;
+
   constructor(private fb: FormBuilder) {}
 
   /**
@@ -30,12 +33,20 @@ export class IdeaFormsComponent implements OnInit {
   ngOnInit() {}
 
   /**
+   * 項目が1つになった場合、削除ボタンを非活性にする
+   */
+  private determination() {
+    this.isDisabled = this.ideas.length === 1 ? true : false;
+  }
+
+  /**
    * 項目追加
    */
   addItem() {
     this.ideas.push(this.fb.control(""));
     // 最後の要素にfocusをset
     setTimeout(() => this.ideaInputElement.last.nativeElement.focus());
+    this.determination();
   }
 
   /**
@@ -47,6 +58,7 @@ export class IdeaFormsComponent implements OnInit {
     if (this.ideas.length <= 1) return;
     // 削除
     this.ideas.removeAt(index);
+    this.determination();
   }
 
   // 疑似Submit
