@@ -1,5 +1,5 @@
 <form
-  [formGroup]="ideaForm"
+  [formGroup]="ideaForm.formGroup"
   (submit)="onSubmit()"
   style="background-color: aquamarine;"
 >
@@ -8,7 +8,7 @@
     <input
       type="text"
       [formControlName]="i"
-      [placeholder]="placeholderValue"
+      [placeholder]="ideaForm.placeholder"
       size="20"
     />
     <button type="button" (click)="removeItem(i)">削除</button>

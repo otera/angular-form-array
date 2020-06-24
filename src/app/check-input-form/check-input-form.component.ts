@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, FormControl, FormArray } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 import { questionSetting, ciFormSetting } from "../common/icommon";
 
 @Component({
@@ -9,8 +9,7 @@ import { questionSetting, ciFormSetting } from "../common/icommon";
 })
 export class CheckInputFormComponent implements OnInit {
   question: questionSetting[];
-  formGroups: FormGroup[];
-  placeholders: string[];
+  forms: ciFormSetting[];
 
   constructor(private fb: FormBuilder) {}
 
@@ -23,18 +22,19 @@ export class CheckInputFormComponent implements OnInit {
     ];
 
     // 問いの数分FormGroupを作成
-    this.formGroups = new Array(this.question.length);
-    this.placeholders = new Array(this.question.length);
-    for (let i = 0; i < this.formGroups.length; i++) {
-      this.formGroups[i] = this.fb.group({
-        ideas: this.fb.array([""]),
-      });
-      this.placeholders[i] = this.question[i].placeholder;
+    this.forms = new Array(this.question.length);
+    for (let i = 0; i < this.forms.length; i++) {
+      this.forms[i] = {
+        formGroup: this.fb.group({
+          ideas: this.fb.array([""]),
+        }),
+        placeholder: this.question[i].placeholder,
+      };
     }
   }
 
   // 疑似Submit
   onSubmit() {
-    console.log("formGroups", this.formGroups);
+    console.log("forms", this.forms);
   }
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output } from "@angular/core";
-import { FormBuilder, FormGroup, FormControl, FormArray } from "@angular/forms";
+import { Component, OnInit, Input } from "@angular/core";
+import { FormBuilder, FormArray } from "@angular/forms";
+import { ciFormSetting } from "../../common/icommon";
 
 @Component({
   selector: "app-idea-forms",
@@ -7,8 +8,7 @@ import { FormBuilder, FormGroup, FormControl, FormArray } from "@angular/forms";
   styleUrls: ["./idea-forms.component.scss"],
 })
 export class IdeaFormsComponent implements OnInit {
-  @Input() ideaForm: FormGroup;
-  @Input() placeholderValue: string;
+  @Input() ideaForm: ciFormSetting;
 
   constructor(private fb: FormBuilder) {}
 
@@ -16,7 +16,7 @@ export class IdeaFormsComponent implements OnInit {
    * getter ideas
    */
   get ideas(): FormArray {
-    return this.ideaForm.get("ideas") as FormArray;
+    return this.ideaForm.formGroup.get("ideas") as FormArray;
   }
 
   ngOnInit() {}
@@ -41,6 +41,6 @@ export class IdeaFormsComponent implements OnInit {
 
   // 疑似Submit
   onSubmit() {
-    console.log(this.ideaForm.controls);
+    console.log(this.ideaForm.formGroup.controls);
   }
 }
