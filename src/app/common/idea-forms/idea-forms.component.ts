@@ -37,6 +37,9 @@ export class IdeaFormsComponent implements OnInit {
    * @param  {number} index 削除する配列index
    */
   removeItem(index: number) {
+    // 項目1つの時は処理中断
+    if (this.ideas.length <= 1) return;
+    // 削除
     this.ideas.removeAt(index);
   }
 
