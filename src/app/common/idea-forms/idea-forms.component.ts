@@ -1,4 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChildren,
+  QueryList,
+  ElementRef,
+} from "@angular/core";
 import { FormBuilder, FormArray } from "@angular/forms";
 import { ciFormSetting } from "../../common/icommon";
 
@@ -8,6 +15,7 @@ import { ciFormSetting } from "../../common/icommon";
   styleUrls: ["./idea-forms.component.scss"],
 })
 export class IdeaFormsComponent implements OnInit {
+  @ViewChildren("ideaInput") ideaInputElement: QueryList<ElementRef>;
   @Input() ideaForm: ciFormSetting;
 
   constructor(private fb: FormBuilder) {}
@@ -26,6 +34,8 @@ export class IdeaFormsComponent implements OnInit {
    */
   addItem() {
     this.ideas.push(this.fb.control(""));
+    // 最後の要素にfocusをset
+    setTimeout(() => this.ideaInputElement.last.nativeElement.focus());
   }
 
   /**
