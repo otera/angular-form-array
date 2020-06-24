@@ -5,7 +5,12 @@
 >
   <div formArrayName="ideas" *ngFor="let idea of ideas.controls; let i = index">
     <!-- [value]無いと画面内画面で反映できないのではと思われる -->
-    <input type="text" [formControlName]="i" size="20" />
+    <input
+      type="text"
+      [formControlName]="i"
+      [placeholder]="placeholderValue"
+      size="20"
+    />
     <button type="button" (click)="removeItem(i)">削除</button>
   </div>
   <button type="button" (click)="addItem()">追加</button>

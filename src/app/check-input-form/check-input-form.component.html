@@ -1,6 +1,9 @@
 <div *ngFor="let q of question; let i = index">
-  Q. {{ q }}
-  <app-idea-forms [ideaForm]="formGroups[i]"></app-idea-forms>
+  Q. {{ q.question }}
+  <app-idea-forms
+    [ideaForm]="formGroups[i]"
+    [placeholderValue]="placeholders[i]"
+  ></app-idea-forms>
   <hr />
 </div>
 <button type="button" (click)="onSubmit()">お試し送信</button>

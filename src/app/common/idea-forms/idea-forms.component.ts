@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, FormControl, FormArray } from "@angular/forms";
 })
 export class IdeaFormsComponent implements OnInit {
   @Input() ideaForm: FormGroup;
+  @Input() placeholderValue: string;
 
   constructor(private fb: FormBuilder) {}
 
