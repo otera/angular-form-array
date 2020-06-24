@@ -7,14 +7,9 @@ import { FormBuilder, FormGroup, FormControl, FormArray } from "@angular/forms";
   styleUrls: ["./idea-forms.component.scss"],
 })
 export class IdeaFormsComponent implements OnInit {
-  @Input() naming: string;
-  @Output() ideaForm: FormGroup;
+  @Input() ideaForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.ideaForm = this.fb.group({
-      ideas: this.fb.array([""]),
-    });
-  }
+  constructor(private fb: FormBuilder) {}
 
   /**
    * getter ideas
