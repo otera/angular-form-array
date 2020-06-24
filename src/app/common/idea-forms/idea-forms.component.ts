@@ -32,6 +32,14 @@ export class IdeaFormsComponent implements OnInit {
     this.ideas.push(this.fb.control(""));
   }
 
+  /**
+   * 項目削除
+   * @param  {number} index 削除する配列index
+   */
+  removeItem(index: number) {
+    this.ideas.removeAt(index);
+  }
+
   // 疑似Submit
   onSubmit() {
     console.log(this.ideaForm.controls);
