@@ -8,9 +8,10 @@ import { AppComponent } from "./app.component";
 import { CheckInputFormComponent } from "./check-input-form/check-input-form.component";
 import { IdeaFormsComponent } from './common/idea-forms/idea-forms.component';
 import { FgInFgComponent } from './fg-in-fg/fg-in-fg.component';
+import { SelectiveEntryFormulaComponent } from './selective-entry-formula/selective-entry-formula.component';
 
 @NgModule({
-  declarations: [AppComponent, CheckInputFormComponent, IdeaFormsComponent, FgInFgComponent],
+  declarations: [AppComponent, CheckInputFormComponent, IdeaFormsComponent, FgInFgComponent, SelectiveEntryFormulaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

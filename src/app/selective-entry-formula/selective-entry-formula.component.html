@@ -1,0 +1,29 @@
+<div *ngFor="let q of question; let i = index">
+  <form [formGroup]="forms[i].formGroup">
+    <!-- タイトルとチェックボックス -->
+    <div class="form-group">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="selQuestion-{{ i }}"
+        formControlName="select"
+        (ngModelChange)="onSelectChange($event, i)"
+      />
+      <label class="form-check-label" for="selQuestion-{{ i }}">{{
+        q.question
+      }}</label>
+    </div>
+    <!-- 入力欄 -->
+    <div class="form-group">
+      <textarea
+        class="form-control"
+        [placeholder]="q.placeholder"
+        [rows]="q.rows"
+        formControlName="opinion"
+      ></textarea>
+    </div>
+  </form>
+  <hr />
+</div>
+
+<button type="button" (click)="onSubmit()">parent-component</button>
