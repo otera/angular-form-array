@@ -31,11 +31,17 @@
 <hr />
 <p>チェックアイテム表示テスト</p>
 <div>
-  <div *ngFor="let q of question; let i = index">
-    <div class="form-group">■ {{ q.question }}</div>
-    <div class="form-group">
-      <!-- prettier-ignore -->
-      <div class="pre-wrap">{{ forms[i].formGroup.controls["opinion"].value }}</div>
+  <ng-container *ngFor="let q of question; let i = index">
+    <!-- いずれかが選択されている -->
+    <div *ngIf="forms[i].formGroup.controls['select'].value">
+      <div class="form-group">■ {{ q.question }}</div>
+      <div class="form-group">
+        <!-- prettier-ignore -->
+        <div class="pre-wrap">{{ forms[i].formGroup.controls["opinion"].value }}</div>
+      </div>
     </div>
-  </div>
+  </ng-container>
+
+  <!-- いずれも選択されていない -->
+  <div *ngIf="!checkStatus">選択なし</div>
 </div>

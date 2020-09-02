@@ -8,8 +8,12 @@ import { selEntryQuestionSetting, seFormSetting } from "../common/icommon";
   styleUrls: ["./selective-entry-formula.component.scss"],
 })
 export class SelectiveEntryFormulaComponent implements OnInit {
+  /** 質問 */
   question: selEntryQuestionSetting[];
+  /** form情報 */
   forms: seFormSetting[];
+  /** いずれかのチェックが選択されているかどうか */
+  checkStatus = false;
 
   constructor(private fb: FormBuilder) {}
 
@@ -46,6 +50,18 @@ export class SelectiveEntryFormulaComponent implements OnInit {
     } else {
       this.forms[index].formGroup.controls["opinion"].disable();
     }
+    // チェック状態をチェック
+    this.checkStatus = this.checkAnyStatus;
+  }
+
+  /**
+   * いずれかのチェックボックスが選択されているかどうか
+   * @returns boolean 選択されている場合はTrue
+   */
+  get checkAnyStatus(): boolean {
+    return this.forms.some((form) => {
+      return form.formGroup.controls["select"].value === true;
+    });
   }
 
   // 疑似Submit
